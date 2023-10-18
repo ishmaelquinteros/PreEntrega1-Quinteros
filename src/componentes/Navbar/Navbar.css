@@ -1,5 +1,5 @@
 .NavContainer{
-    background-color: khaki;
+    background-color:bisque;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,7 +17,8 @@
     font-size:xx-large;
     align-self:center;
     transform: perspective(20cm) rotateX(20deg) rotateY(-6deg);
-    margin-right: -20px;
+    margin-right: -25px;
+    margin-left: -50px;
 }
 
 .titulo-imagen{
@@ -27,7 +28,6 @@
     margin: 0;
     padding: 0;
 }
-
 
 .categorias-titulo{
     align-self: center;
@@ -47,7 +47,6 @@
 }
 .categorias-lista-option{
     margin-left: 10px;
-    transform: perspective(9cm) rotateX(20deg) rotateY(-6deg);
 }
 
 /*

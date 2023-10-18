@@ -1,0 +1,11 @@
+.carrito{
+    height: 50px;
+    width: 50px;
+}
+
+.carrito-numero{
+    background-color: white;
+    border-radius: 50px;
+    margin: 5px;
+    padding: 5px;
+}

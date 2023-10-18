@@ -1,8 +1,11 @@
+import fotocarrito from '../../carrito-de-compras.png';
+import './Cartwidget.css';
+
 const cartwidget = () => {
     return (
     <div>
-        <h4>Aqui va carrito</h4>
-        <span>3</span>
+        <img src={fotocarrito} alt="carrito" className='carrito'></img>
+        <span className='carrito-numero'>3</span>
     </div>
     )
 }
