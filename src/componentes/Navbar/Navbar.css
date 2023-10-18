@@ -1,0 +1,17 @@
+.NavContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px black solid;
+}
+/*
+.titulo-container{}
+
+.titulo-principal{}
+
+.categorias-container{}
+
+.categorias-titulo{}
+
+.categorias-lista{}
+*/
