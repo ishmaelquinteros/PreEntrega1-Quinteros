@@ -1,0 +1,15 @@
+.conteiner-principal{
+    display: flex;
+}
+.card-principal{
+    height: auto;
+    width: 15rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+.card-imagen{
+    padding: 1rem;
+    height: 10rem;
+    width: 10rem;
+    image-rendering: auto;   
+}

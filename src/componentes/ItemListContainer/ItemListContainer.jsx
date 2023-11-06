@@ -1,9 +1,10 @@
+import { ItemList } from "../ItemList/ItemList";
 
-const ItemListContainer = ({gretting}) => {
+const ItemListContainer = () => {
   return (
-    <div>
-        <h3>{gretting}</h3>
-    </div>
+    <>
+      <ItemList />
+    </>
   )
 }
 
