@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react"
-import Item from "../Item/Item"
+import { useEffect, useState } from "react";
+import Item from "../Item/Item";
 import './ItemListaStyle.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 export const ItemList = () => {
     const fetchProduct = () =>{
@@ -18,12 +22,14 @@ export const ItemList = () => {
     },[])
 
     return (
-        <>
-        {ListaProd.map((producto, index) => (
-            <div key={`${index}`} class="container-fluid">
+        <Container fluid style={{'background-color': "cornsilk"}}>
+        <Row>
+            {ListaProd.map((producto, index) => (
+            <Col key={`${index}`}>
                 <Item id={producto.id} titulo={producto.title} descripcion={producto.description} precio={producto.price} imagen={producto.image}></Item>
-            </div>   
-        ))}    
-        </>
+            </Col>   
+            ))}    
+        </Row>
+        </Container>    
         )
     }
