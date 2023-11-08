@@ -1,0 +1,10 @@
+.detail-titulo{
+    text-align: center;
+}
+
+.detail-imagen{
+    height: 40%;
+    width: 40%;
+    image-rendering: optimizeQuality;
+    align-self: center;
+}

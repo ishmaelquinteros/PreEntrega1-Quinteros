@@ -3,6 +3,7 @@ import './Navbar.css';
 import fototitulo from '../../foto-calzados-1.jpg';
 import fotonene from '../../Zapato-infantil-1024x846.jpg'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -15,11 +16,28 @@ const NavBar = () => {
         <div className='categorias-container'>
             <h2 className='categorias-titulo'>Categorias</h2>
             <ul className='categorias-lista'>
-              <li className='categorias-lista-option'><Button variant="outline-danger">Hombre</Button></li> 
-              <li className='categorias-lista-option'><Button variant="outline-danger">Mujer</Button></li>
-              <li className='categorias-lista-option'><Button variant="outline-danger">Joyas</Button></li>
-              <li className='categorias-lista-option'><Button variant="outline-danger">Electronicos</Button></li> 
+
+              <li className='categorias-lista-option'>
+                <Link to={"/category/men's-clothing"}>
+                    <Button variant="outline-danger">Hombre</Button> 
+                </Link></li>
+
+              <li className='categorias-lista-option'>
+                <Link to={"/category/women's-clothing"}>
+                <Button variant="outline-danger">Mujer</Button></Link>
+                </li>
+
+              <li className='categorias-lista-option'>
+              <Link to={'/category/jewelery'}>
+                <Button variant="outline-danger">Joyas</Button></Link>
+                </li>
+              
+                <li className='categorias-lista-option'>
+                <Link to={'category/electronics'}>
+                <Button variant="outline-danger">Electronicos</Button></Link>
+                </li> 
             </ul>
+        
         </div>
     <CartWidget />
     </div>

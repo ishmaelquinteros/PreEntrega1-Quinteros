@@ -2,6 +2,7 @@ import './ItemStyle.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion'
+import { Link } from 'react-router-dom';
 
 export const Item = ({id, titulo, descripcion, precio, imagen}) => {
   return (
@@ -20,7 +21,9 @@ export const Item = ({id, titulo, descripcion, precio, imagen}) => {
       </Accordion>
           <h5 class='m-3'>Precio: <strong>${precio}</strong></h5>
         </Card.Text>
+        <Link to={'/item/'+ id}>
         <Button variant="outline-danger">Comprar</Button>
+        </Link>
       </Card.Body>
     </Card>
   )

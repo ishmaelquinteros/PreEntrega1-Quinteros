@@ -20,10 +20,12 @@ export const Itemcount = () => {
    if (pedido <= stockunidad){
     setStock(stock - pedido);
     setMensaje("Se agrega " + pedido + " unidad/es al carrito");
-    console.log("Quedan en stock " + (stockunidad - pedido) + " unidad/es");
+    return msj;
   } else{
     setMensaje("Lo sentimos no hay stock suficiente");
-  }  
+    return msj;
+  }
+
   }
   return (
     <>
