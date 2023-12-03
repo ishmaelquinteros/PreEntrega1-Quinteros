@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
 import Item from "../Item/Item";
 import './ItemListaStyle.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-
-export const ItemList = () => {
+export const ItemList = (ProductsList) => {
 
     const [ListaProd, setListaProd] = useState([]);
     const {categoria} = useParams();
@@ -46,7 +45,7 @@ export const ItemList = () => {
         <Row>
             {ListaProd.map((producto, index) => (
             <Col key={`${index}`}>
-                <Item id={producto.id} titulo={producto.title} descripcion={producto.description} precio={producto.price} imagen={producto.image}></Item>
+                <Item id={producto.id} titulo={producto.title} precio={producto.price} imagen={producto.image}></Item>
             </Col>   
             ))}    
         </Row>

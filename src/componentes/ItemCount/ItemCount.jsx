@@ -1,43 +1,25 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+export const ItemCount = ({stock, count, setCount}) => {
 
-export const Itemcount = () => {
-
-
-    const [msj, setMensaje] = useState("");
-    const [count, setCount] = useState(0); 
-    const [stock, setStock] = useState(1)
-
-  const AsignarStock = (propStock) => {
-        setStock(propStock);
+  const onAdd = () =>{
+    if (count === stock) return;
+    setCount(count+1);
   }
 
-  useEffect (() => {
-    AsignarStock(5);
-  }, [])
-
-  const checkStock = (pedido, stockunidad) => {
-   if (pedido <= stockunidad){
-    setStock(stock - pedido);
-    setMensaje("Se agrega " + pedido + " unidad/es al carrito");
-    return msj;
-  } else{
-    setMensaje("Lo sentimos no hay stock suficiente");
-    return msj;
+  const onSubtract = () => {
+    if (count === 0) return;
+    setCount(count-1);
   }
 
-  }
   return (
     <>
       <div>
-        <button onClick={()=> setCount(count+1)}>+</button>
+        {count === stock ? null :<button onClick={onAdd}>+</button>}
         <label>{count}</label>
-        <button onClick={()=> setCount(count-1)}>-</button>
-        <button onClick={() => checkStock (count, stock)}>Agregar a carrito</button>
+        <button onClick={onSubtract}>-</button>
       </div>
       
     </>
   );
 }
 
-export default Itemcount;
+export default ItemCount;

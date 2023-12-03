@@ -6,12 +6,17 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+
     return (
     <div className='NavContainer'>
         <div className='titulo-container'>
+            
             <img alt='foto nav' src={fototitulo} className='titulo-imagen'></img>
+            <Link to={"/"}>
             <h1 className='titulo-principal'>Feria articulos</h1>
+            </Link>
             <img alt='foto nav' src={fotonene} className='titulo-imagen'></img>
+            
         </div>
         <div className='categorias-container'>
             <h2 className='categorias-titulo'>Categorias</h2>
@@ -35,9 +40,9 @@ const NavBar = () => {
                 <li className='categorias-lista-option'>
                 <Link to={'category/electronics'}>
                 <Button variant="outline-danger">Electronicos</Button></Link>
-                </li> 
+                </li>
+                 
             </ul>
-        
         </div>
     <CartWidget />
     </div>
