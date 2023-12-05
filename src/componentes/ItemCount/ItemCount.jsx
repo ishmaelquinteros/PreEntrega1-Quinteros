@@ -13,9 +13,9 @@ export const ItemCount = ({stock, count, setCount}) => {
   return (
     <>
       <div>
-        {count === stock ? null :<button onClick={onAdd}>+</button>}
-        <label>{count}</label>
-        <button onClick={onSubtract}>-</button>
+      <button onClick={onSubtract}>-</button>
+      <label>Seleccione cantidad: {count}</label>  
+      {count === stock ? null :<button onClick={onAdd}>+</button>}  
       </div>
       
     </>
