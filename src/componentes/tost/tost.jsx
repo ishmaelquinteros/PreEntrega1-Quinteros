@@ -6,7 +6,10 @@ export const Tost = ({respuesta}) => {
     <ToastContainer
         className="p-3"
         position={'middle-end'}
+        bg="primary"
+        data-bs-theme="light"
         style={{ zIndex: 1 }}>
+          
     <Toast>
       <Toast.Header>
         <strong className="me-auto">Pedido registrado</strong>

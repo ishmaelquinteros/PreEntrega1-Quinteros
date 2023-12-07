@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Mi aplicación
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta aplicación simula la comprar productos en línea, permite registrar un usuario con sus datos personales (nombre, apellido, celular, email) y registar un pedido utilizando firebase.
 
-## Available Scripts
+# Se creo la app react con Create-React-App
 
-In the project directory, you can run:
+[Create React App](https://github.com/facebook/create-react-app).
 
-### `npm start`
+## Instalación
 
-Runs the app in the development mode.\
+Para utilizar la app, es necesario:
+
+1. Clonar el repositorio Github
+Open [Tienda Feria](https://github.com/ishmaelquinteros/PreEntrega1-Quinteros.git)
+
+2. Ejecuta `npm install` para instalar las dependencias.
+3. Ejecuta `npm start` para iniciar la aplicación.
+
+Se abre el navegador en modo desarrollo en el localhost\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Desde la pagina se pueden ver los cambios realizados y errores en la consola.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para lanzar la app a producción.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Dependencias
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Se utilizaron las siguientes dependencias para la realización de la app:
+    "bootstrap-icons": "1.11.2"
+    "firebase": "10.7.0"
+    "react-bootstrap": "2.9.0"
 
-### `npm run eject`
+Para instalar las dependencias:
+[react-bootstrap]: npm install react-bootstrap bootstrap
+[bootstrap-icons]: npm install bootstrap-icons
+[firebase]: npm install firebase
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Configuración de Firebase
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Crear una cuenta de Firebase.
+2. Crear una nueva aplicación de Firebase.
+3. Agregar la configuración de Firebase a la aplicación.
+4. Crea una base de datos de Firebase.
+5. Configura la autenticación de Firebase.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Uso
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Busca productos en la página de inicio.
+2. Ingresa a su detalle para ver características.
+3. Agrega productos al carrito.
+4. Modifica los productos en el carrito.
+5. Crea un pedido con el registro de un usuario.
 
-## Learn More
+## Contribución
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Si deseas contribuir a este proyecto, sigue estos pasos:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/fooBar`).
+3. Haz tus cambios y haz commit de ellos (`git commit -am 'Add some fooBar'`).
+4. Haz push de la rama (`git push origin feature/fooBar`).
+5. Crea un nuevo Pull Request.
+6. Espera a que se revise y apruebe tu Pull Request.
 
-### Code Splitting
+## Créditos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Bootstrap: https://getbootstrap.com/
+- Firebase: https://firebase.google.com/

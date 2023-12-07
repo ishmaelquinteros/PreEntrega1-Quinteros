@@ -23,14 +23,6 @@ useEffect(() => {
    <div>
   {itemSelect ? <ItemDetail product={itemSelect} /> : null }
   </div>
-
-   //</div>id={itemSelect.id} 
-   //</div>title={itemSelect.title}
-   //</div>description={itemSelect.description}
-   //</div>image={itemSelect.image}
-   //</div>type={itemSelect.type}
-   //</div>stock={itemSelect.stock}>
-   //</div></ItemDetail> : null}
   )
 }
 
