@@ -2,15 +2,18 @@
     display: flex;
 }
 .card-principal{
-    min-height: 12rem;
-    height: auto;
-    width: 12rem;
-    margin: 1rem;
-    padding: 1rem;
+    max-height: 25rem;
+    width: 15rem;
+    margin: 5px;
+    padding: 5px;
 }
 .card-imagen{
-    padding: 1rem;
-    height: 8rem;
-    width: 8rem;
-    image-rendering: auto;   
+    min-height: 16rem;
+    max-height: 16rem;
+    width: 90%;
+    image-rendering:optimizeQuality;   
+}
+.card-body{
+    margin: 1px;
+    padding: 0;
 }

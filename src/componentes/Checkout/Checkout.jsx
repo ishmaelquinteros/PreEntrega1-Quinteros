@@ -3,9 +3,10 @@ import Button from 'react-bootstrap/Button';
 import { CartContext } from '../../context/CartContext';
 import { useState, useContext } from 'react';
 import { db } from "../..";
-import { addDoc, collection} from 'firebase/firestore';
+import { addDoc, collection, doc, updateDoc} from 'firebase/firestore';
 import { Tost } from '../tost/tost'
 import { useNavigate } from 'react-router-dom';
+import TableProducts from '../TableProducts/TableProducts';
 
 const Checkout = () => {
   const {products, removeList, total} = useContext(CartContext);
@@ -18,7 +19,6 @@ const Checkout = () => {
     email:""
   })
 
-  
   const createOrder = (event) =>{
     event.preventDefault();
     const newOrder = {
@@ -32,28 +32,27 @@ const Checkout = () => {
       }}),
       date: new Date(),
       total: total
-    }
+    };
 
     const queryDb = collection(db, "orders");
-    addDoc(queryDb, newOrder).then((res)=> {
+    addDoc(queryDb, newOrder)
+    .then((res)=> {
       setConfirmation(res.id);
-      console.log(res)
-      removeList();
       setFormValue({
         name: "",
         lastname: "",
         phone: "",
-        email:""
-        })
+        email:""  
+      })
         setTimeout (() => {
           navigate('/') 
         }, 5000) 
-    })
-    .catch((error)=>{
+        updateProductStock();
+        removeList();
+      }).catch((error)=>{
       alert("Hubo un error al registar " + error);
     })
-  
-  };
+  }
 
   const handInput = (event) => {
     setFormValue({
@@ -62,13 +61,24 @@ const Checkout = () => {
     })
   };
 
-  const validateForm = 
-     formValue.name === "" 
+  const validateForm = formValue.name === "" 
   || formValue.lastname === "" 
   || formValue.phone === "" 
   || formValue.email === "" 
 
-
+  const updateProductStock = () =>{
+    products.forEach((prod) => {
+      const queryDb = doc(db, "products", prod.id)
+      updateDoc(queryDb, {
+        stock: prod.stock - prod.quantity,
+      }).then(() => {
+        console.log("se actualizo el stock de producto" + prod.title)
+      }).catch((err) =>{
+        console.log("ocurrio un error " + err + "al actualizar stock producto " + prod.title)
+      })
+    })
+  }
+    
   return (
     <>
     <div class="d-flex flex-column align-items-center">
@@ -97,9 +107,10 @@ const Checkout = () => {
       Confirmar compra</Button>
   </Form>
   </div>
+  <TableProducts product={products}></TableProducts>
   {confirmation !== undefined ? <Tost respuesta={confirmation}></Tost> : null }
   </>
-  )
+ )
 }
 
 export default Checkout

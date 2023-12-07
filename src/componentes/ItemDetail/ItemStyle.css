@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 90%;
 }
 
 .detail-titulo{
@@ -9,16 +11,16 @@
 }
 
 .detail-imagen{
-    height: 100%;
+    max-height: 100%;
     width: 100%;
     image-rendering: optimizeQuality;
     align-self: center;
 }
 .container-imagenes{
     padding: 0;
-    margin: 10px;
+    margin: 5px;
     width: 60%;
-    height: auto;
+    height:80%
 }
 .contenedor-info{
     display: flex;
