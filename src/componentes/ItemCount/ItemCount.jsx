@@ -1,3 +1,5 @@
+import Button from 'react-bootstrap/Button';
+import { Stack } from 'react-bootstrap';
 export const ItemCount = ({stock, count, setCount}) => {
 
   const onAdd = () =>{
@@ -12,11 +14,11 @@ export const ItemCount = ({stock, count, setCount}) => {
 
   return (
     <>
-      <div>
-      <button onClick={onSubtract}>-</button>
+      <Stack direction="horizontal" gap={3}>
+      <Button variant="danger" onClick={onSubtract}>-</Button>
       <label>Seleccione cantidad: {count}</label>  
-      {count === stock ? null :<button onClick={onAdd}>+</button>}  
-      </div>
+      {count === stock ? null : <Button variant="danger" onClick={onAdd}>+</Button>}  
+      </Stack>
       
     </>
   );

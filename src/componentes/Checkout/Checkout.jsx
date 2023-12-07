@@ -1,28 +1,104 @@
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { CartContext } from '../../context/CartContext';
+import { useState, useContext } from 'react';
+import { db } from "../..";
+import { addDoc, collection} from 'firebase/firestore';
+import { Tost } from '../tost/tost'
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
+  const {products, removeList, total} = useContext(CartContext);
+  const [confirmation, setConfirmation] = useState();
+  const navigate = useNavigate();
+  const [formValue, setFormValue] = useState({
+    name: "",
+    lastname: "",
+    phone: "",
+    email:""
+  })
+
+  
+  const createOrder = (event) =>{
+    event.preventDefault();
+    const newOrder = {
+      buyer: formValue,
+      items: products.map((product)=>{
+        return {
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          quantity: product.quantity,
+      }}),
+      date: new Date(),
+      total: total
+    }
+
+    const queryDb = collection(db, "orders");
+    addDoc(queryDb, newOrder).then((res)=> {
+      setConfirmation(res.id);
+      console.log(res)
+      removeList();
+      setFormValue({
+        name: "",
+        lastname: "",
+        phone: "",
+        email:""
+        })
+        setTimeout (() => {
+          navigate('/') 
+        }, 5000) 
+    })
+    .catch((error)=>{
+      alert("Hubo un error al registar " + error);
+    })
+  
+  };
+
+  const handInput = (event) => {
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value,
+    })
+  };
+
+  const validateForm = 
+     formValue.name === "" 
+  || formValue.lastname === "" 
+  || formValue.phone === "" 
+  || formValue.email === "" 
+
+
   return (
+    <>
     <div class="d-flex flex-column align-items-center">
     <Form>
     <Form.Group className="mb-3" controlId="ControlInput1">
       <Form.Label>Ingrese su nombre</Form.Label>
-      <Form.Control type="text" placeholder="nombre" />
+      <Form.Control type="text" placeholder="nombre"
+      value={formValue.name} onChange={handInput} name="name" required/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="ControlInput2">
       <Form.Label>Ingrese su apellido</Form.Label>
-      <Form.Control type="text" placeholder="apellido"/>
+      <Form.Control type="text" placeholder="apellido"
+      value={formValue.lastname} onChange={handInput} name="lastname" required/>
     </Form.Group>
     <Form.Group className="mb-3" controlId="ControlInput3">
       <Form.Label>Ingrese su telefono</Form.Label>
-      <Form.Control type="text" placeholder="ejemplo: 351-2369055" />
+      <Form.Control type="text" placeholder="ejemplo: 351-2369055"
+      value={formValue.phone} onChange={handInput} name="phone" required />
     </Form.Group>
     <Form.Group className="mb-3" controlId="ControlInput4">
       <Form.Label>Ingrese un e-mail</Form.Label>
-      <Form.Control type="email" placeholder="name@example.com"/>
-      
+      <Form.Control type="email" placeholder="name@example.com"
+      value={formValue.email} onChange={handInput} name="email" required/>
     </Form.Group>
+    <Button variant="outline-danger" onClick={createOrder} type='submit' disabled={validateForm}>
+      Confirmar compra</Button>
   </Form>
   </div>
+  {confirmation !== undefined ? <Tost respuesta={confirmation}></Tost> : null }
+  </>
   )
 }
 

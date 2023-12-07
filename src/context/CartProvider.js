@@ -5,7 +5,8 @@ import { useEffect } from "react";
 const CartProvider = ({children}) => {
     const [products, setProducts] = useState([]);
     const [productQuantity, setProductQuantity] = useState(0);
-    
+    const [total, setTotal] = useState(0)
+
     let listaFiltrada = [];
 
     const addItem = (product, quantity) =>{
@@ -44,12 +45,13 @@ const CartProvider = ({children}) => {
     };
 
     useEffect(() => {
-        setProductQuantity(
-            products.reduce((acc, product) => acc + product.quantity, 0),0);  
+        setProductQuantity(products.reduce((acc, product) => acc + product.quantity, 0),0);
+        const suma = products.reduce((acc, current) => acc + current.price * current.quantity, 0);
+        setTotal(suma)
     }, [products])
     
     return (
-    <CartContext.Provider value={{products, addItem, productQuantity, removeList, deleteItem}}>
+    <CartContext.Provider value={{products, addItem, productQuantity, removeList, deleteItem, total}}>
         {children}
     </CartContext.Provider>
   )

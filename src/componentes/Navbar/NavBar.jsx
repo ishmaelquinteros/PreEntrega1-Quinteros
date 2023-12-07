@@ -1,24 +1,20 @@
 import CartWidget from '../CartWidget/CartWidget.jsx';
 import './Navbar.css';
-import fototitulo from '../../foto-calzados-1.jpg';
-import fotonene from '../../Zapato-infantil-1024x846.jpg'
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { Stack } from 'react-bootstrap';
+
 
 const NavBar = () => {
 
     return (
     <div className='NavContainer'>
-        <div className='titulo-container'>
-            <img alt='foto nav' src={fototitulo} className='titulo-imagen'></img>
+        <Stack direction="horizontal" className='titulo-container' gap={0}>
             <Link to={"/"}>
             <h1 className='titulo-principal'>Feria articulos</h1>
             </Link>
-            <img alt='foto nav' src={fotonene} className='titulo-imagen'></img>
-            
-        </div>
+        </Stack>
         <div className='categorias-container'>
-            <h2 className='categorias-titulo'>Categorias</h2>
             <ul className='categorias-lista'>
 
               <li className='categorias-lista-option'>

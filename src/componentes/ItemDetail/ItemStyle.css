@@ -5,7 +5,7 @@
 }
 
 .detail-titulo{
-    text-align: center;
+    align-self: flex-start;
 }
 
 .detail-imagen{
@@ -16,6 +16,13 @@
 }
 .container-imagenes{
     padding: 0;
-    margin: 0;
-    width: 50%;
+    margin: 10px;
+    width: 60%;
+    height: auto;
+}
+.contenedor-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
 }

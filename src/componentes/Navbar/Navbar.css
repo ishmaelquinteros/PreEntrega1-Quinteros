@@ -2,29 +2,40 @@
     background-color:bisque;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     border-bottom: 5px white solid;
+    height: 65px;
 }
 
 .titulo-container{
-    display: flex;
-    flex-direction: row-reverse;
+    background-image: url("../../foto-calzados-1.jpg");
+    background-image: no-repeat;
+    background-image: fixed;
+    background-image: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .titulo-principal{
-    background-color: coral ;
-    color: aliceblue;
-    font-size:xx-large;
+    background-color: aliceblue;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    color:darkorange;
+    font-size: xx-large;
+    text-align: center;
     align-self:center;
     transform: perspective(20cm) rotateX(20deg) rotateY(-6deg);
-    margin-right: -25px;
-    margin-left: -50px;
+    margin-right: 25px;
+    margin-left: 50px;
 }
 
 .titulo-imagen{
-    height: 110px;
-    width: 180px;
-    image-rendering:optimizeQuality;
+    height: 60px;
+    width: 130px;
+    image-rendering:crisp-edges;
     margin: 0;
     padding: 0;
 }
@@ -49,8 +60,12 @@
     margin-left: 10px;
 }
 
-/*
-
-.categorias-container{}
-
-*/
+.a{
+    text-decoration: none;
+  }
+  .Link{
+    text-decoration: none;
+  }
+  .a href{
+    text-decoration: none;
+  }
