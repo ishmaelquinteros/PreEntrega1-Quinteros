@@ -11,6 +11,10 @@ import TableProducts from '../TableProducts/TableProducts';
 const Checkout = () => {
   const {products, removeList, total} = useContext(CartContext);
   const [confirmation, setConfirmation] = useState();
+  const [errorMail, SetErrorMail] = useState();
+  const [repeatMail, setRepeatMail] = useState()
+  const [matchEmail, setMatchEmail] = useState(false)
+  const [emailValido, setEmailValido] = useState();
   const navigate = useNavigate();
   const [formValue, setFormValue] = useState({
     name: "",
@@ -21,6 +25,7 @@ const Checkout = () => {
   
   const createOrder = (event) =>{
       event.preventDefault();
+        
         const newOrder = {
           buyer: formValue,
           items: products.map((product)=>{
@@ -45,22 +50,34 @@ const Checkout = () => {
         }).catch((error)=>{alert("Hubo un error al registar " + error)})
     }
   
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    SetErrorMail(regex.test(email));
+  };
   
   const handInput = (event) => {
     setFormValue({
       ...formValue,
-      [event.target.name]: event.target.value,})
+      [event.target.name]: event.target.value,});
+      if (event.target.name === 'email'){
+        validateEmail( event.target.value)   
+        setEmailValido(event.target.value)
+      }    
     }
+
+    const handleEmail2Change = (event) => {
+      console.log(event.target.value);
+      if(event.target.value === emailValido){
+        setMatchEmail(true)
+      }
+    };
 
   const validateForm = formValue.name === "" 
   || formValue.lastname === "" 
   || formValue.phone === "" 
   || formValue.email === "" 
-
-  //const validateEmail = (e) => {
-  //  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //  regex.test(e) ? setConfirmEmail(true) : setConfirmEmail(false)
-  //};
+  || !errorMail  
+  || matchEmail === false
 
   const updateProductStock = () =>{
     products.forEach((prod) => {
@@ -94,7 +111,8 @@ const Checkout = () => {
     
     <Form.Group className="mb-3" controlId="ControlInput3">
       <Form.Label>Ingrese su telefono</Form.Label>
-      <Form.Control type="text" placeholder="ejemplo: 351-2369055"
+      <Form.Control type="tel" placeholder="ejemplo: 351-2369055"
+      pattern=''
       value={formValue.phone} onChange={handInput} name="phone" required />
     </Form.Group>
     </div>
@@ -103,8 +121,14 @@ const Checkout = () => {
       <Form.Label>Ingrese un e-mail</Form.Label>
       <Form.Control type="email" placeholder="name@example.com"
       value={formValue.email} onChange={handInput} name="email" required/>
+      {!errorMail && <span style={{color: 'red'}}>ingrese un email válido</span>}
     </Form.Group>
-
+    <Form.Group className="mb-3" controlId="ControlInput5">
+      <Form.Label>Ingrese repetir email ingresado</Form.Label>
+      <Form.Control type="repeatmail" placeholder="name@example.com"
+      value={repeatMail} onChange={handleEmail2Change} name="repeatemail" required/>
+      {!matchEmail && <span style={{color: 'red'}}>Deben coincidir los email ingresados</span>}
+    </Form.Group>
     </div>
     <Button variant="outline-danger" onClick={createOrder} type='submit' disabled={validateForm}>
       Confirmar compra</Button>
