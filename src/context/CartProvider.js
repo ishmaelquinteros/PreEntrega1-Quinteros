@@ -2,59 +2,75 @@ import { useState } from "react";
 import { CartContext } from "./CartContext";
 import { useEffect } from "react";
 
-const CartProvider = ({children}) => {
-    const [products, setProducts] = useState([]);
-    const [productQuantity, setProductQuantity] = useState(0);
-    const [total, setTotal] = useState(0)
+const CartProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [productQuantity, setProductQuantity] = useState(0);
+  const [total, setTotal] = useState(0);
 
-    let listaFiltrada = [];
+  let listaFiltrada = [];
 
-    const addItem = (product, quantity) =>{
-        if (isInCart(product.id)) {
-            const newQuantity = products.map((item) => {
-                if (item.id === product.id){
-                    return{
-                        ...item,
-                        quantity: item.quantity + quantity,
-                    };
-                }
-                return item;
-            });
-            setProducts(newQuantity);
-            return;
+  const addItem = (product, quantity) => {
+    if (isInCart(product.id)) {
+      const newQuantity = products.map((item) => {
+        if (item.id === product.id) {
+          const newCantPedida = item.quantity + quantity;
+          if (newCantPedida <= item.stock) {
+            return {
+              ...item,
+              quantity: item.quantity + quantity,
+            };
+          }
         }
-        setProducts([...products, 
-            {...product, quantity}
-        ]);
+        return item;
+      });
+      setProducts(newQuantity);
+      return;
     }
+    setProducts([...products, { ...product, quantity }]);
+  };
 
-    const removeList = () =>{
-        setProductQuantity(0);
-        setProducts([]);
-    }
+  const removeList = () => {
+    setProductQuantity(0);
+    setProducts([]);
+  };
 
-    const deleteItem = (id) => {
-        listaFiltrada = products.filter((product) => {
-             return product.id !== id 
-        });
-        setProducts(listaFiltrada)
-    } 
+  const deleteItem = (id) => {
+    listaFiltrada = products.filter((product) => {
+      return product.id !== id;
+    });
+    setProducts(listaFiltrada);
+  };
 
-    const isInCart = (productId) =>{
-        return products.some((product)=> product.id === productId);
-    };
+  const isInCart = (productId) => {
+    return products.some((product) => product.id === productId);
+  };
 
-    useEffect(() => {
-        setProductQuantity(products.reduce((acc, product) => acc + product.quantity, 0),0);
-        const suma = products.reduce((acc, current) => acc + current.price * current.quantity, 0);
-        setTotal(suma)
-    }, [products])
-    
-    return (
-    <CartContext.Provider value={{products, addItem, productQuantity, removeList, deleteItem, total}}>
-        {children}
+  useEffect(() => {
+    setProductQuantity(
+      products.reduce((acc, product) => acc + product.quantity, 0),
+      0
+    );
+    const suma = products.reduce(
+      (acc, current) => acc + current.price * current.quantity,
+      0
+    );
+    setTotal(suma);
+  }, [products]);
+
+  return (
+    <CartContext.Provider
+      value={{
+        products,
+        addItem,
+        productQuantity,
+        removeList,
+        deleteItem,
+        total,
+      }}
+    >
+      {children}
     </CartContext.Provider>
-  )
-}
+  );
+};
 
-export default CartProvider
+export default CartProvider;
